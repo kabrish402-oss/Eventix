@@ -1,5 +1,5 @@
 # 📑 Capstone Project Submission | Web Technologies SP26
-### 🔮 GlowTicketing — Premium Event Ticket Booking & Seat Selector
+### 🔮 Eventix— Premium Event Ticket Booking & Seat Selector
 
 ---
 
@@ -11,7 +11,7 @@
 ---
 
 ## 📖 Project Overview
-**GlowTicketing** is a highly interactive, client-focused event ticket booking system tailored with a premium, boutique, pastel-dream aesthetic. Built completely using plain vanilla JavaScript, Bootstrap 5, and custom styling overrides, the application provides an end-to-end interface for searching events, making real-time interactive seat selections, validating customer records, and handling persistent client states with a local mock REST API server.
+**Eventix** is a highly interactive, client-focused event ticket booking system tailored with a premium, boutique, pastel-dream aesthetic. Built completely using plain vanilla JavaScript, Bootstrap 5, and custom styling overrides, the application provides an end-to-end interface for searching events, making real-time interactive seat selections, validating customer records, and handling persistent client states with a local mock REST API server.
 
 The project is structured strictly according to the architecture guidelines, partitioning the application into a user-facing booking interface (`index.html`) and a distinct, metric-driven administrative management dashboard (`admin.html`).
 
