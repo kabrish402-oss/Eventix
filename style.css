@@ -1,0 +1,229 @@
+/* Base Style Variables */
+:root {
+    --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #f3e5f5 100%);
+    --pink-primary: #ff7597;
+    --pink-hover: #ff527b;
+    --lavender-accent: #b39ddb;
+    --seat-available: #e1bee7;
+    --seat-selected: #ff7597;
+    --seat-occupied: #cfd8dc;
+    --text-main: #4a4a4a;
+    --admin-theme: #4a2e56;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: #4a2e56;
+}
+
+.text-pink {
+    color: var(--pink-primary);
+}
+.text-purple {
+    color: var(--admin-theme);
+}
+
+/* User vs Admin Layout Distinction Rules */
+.navbar-user {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 2px solid #ffcfdc;
+}
+
+.navbar-admin {
+    background: var(--admin-theme) !important;
+    border-bottom: 3px solid var(--pink-primary);
+}
+.navbar-admin .navbar-brand, .navbar-admin .nav-link {
+    color: #ffffff !important;
+}
+
+/* Elegant Glassmorphism Cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(244, 143, 177, 0.1);
+}
+
+/* Seating Chart Grid Structural Rules */
+.stage-line {
+    height: 6px;
+    background: linear-gradient(90deg, transparent, var(--lavender-accent), transparent);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(179, 157, 219, 0.4);
+}
+.stage-text {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: #9575cd;
+    font-weight: 600;
+}
+
+.seat {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background-color: var(--seat-available);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #7b1fa2;
+    border: none;
+}
+.seat:hover:not(.occupied) {
+    transform: scale(1.15);
+    background-color: var(--pink-hover);
+    color: white;
+}
+.seat.selected {
+    background-color: var(--seat-selected);
+    color: white;
+    box-shadow: 0 0 12px rgba(255, 117, 151, 0.6);
+}
+.seat.occupied {
+    background-color: var(--seat-occupied);
+    color: #90a4ae;
+    cursor: not-allowed;
+}
+
+.seat-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+.row-label {
+    width: 25px;
+    font-weight: 600;
+    color: #9c27b0;
+    display: flex;
+    align-items: center;
+}
+
+/* Sample boxes for the legend mapping */
+.seat-sample {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border-radius: 4px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.seat-sample.available { background-color: var(--seat-available); }
+.seat-sample.selected { background-color: var(--seat-selected); }
+.seat-sample.occupied { background-color: var(--seat-occupied); }
+
+/* Form Control Variations */
+.custom-input {
+    border-radius: 12px;
+    border: 2px solid #e1bee7;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+.custom-input:focus {
+    border-color: var(--pink-primary);
+    box-shadow: 0 0 8px rgba(255, 117, 151, 0.2);
+}
+
+.btn-pink {
+    background: linear-gradient(90deg, #ff7597, #ff8da1);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+.btn-pink:hover {
+    background: linear-gradient(90deg, #ff527b, #ff7597);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Form Inline Validation Feedback Custom Placements */
+.error-feedback {
+    font-size: 0.825rem;
+    color: #d32f2f;
+    margin-top: 4px;
+    display: none;
+}
+
+/* ==========================================================================
+   🔮 HIGH-END INTERACTIVE ADMIN REFINEMENTS
+   ========================================================================== */
+
+/* 1. 3D Pop-Up Elastic Metric Cards Transition Layer */
+.admin-stat-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* 3D Translation & Drop Shadow Scaling */
+.admin-stat-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 35px rgba(74, 46, 86, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Micro-Radial Glow Backdrops for the metrics headers */
+.admin-stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 24px;
+}
+.card-revenue:hover::after {
+    background: radial-gradient(circle at top right, rgba(13, 110, 253, 0.06), transparent 70%);
+    opacity: 1;
+}
+.card-seats:hover::after {
+    background: radial-gradient(circle at top right, rgba(25, 135, 84, 0.06), transparent 70%);
+    opacity: 1;
+}
+.card-capacity:hover::after {
+    background: radial-gradient(circle at top right, rgba(255, 193, 7, 0.06), transparent 70%);
+    opacity: 1;
+}
+
+/* 2. Ledger Layout Boundaries & Micro-Movements */
+.admin-table-container {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.custom-table tbody tr {
+    transition: all 0.2s ease;
+    cursor: default;
+}
+.custom-table tbody tr:hover {
+    background-color: rgba(255, 117, 151, 0.03) !important;
+}
+
+/* Rounded Pill Button Shadow Glow Injectors */
+.btn-outline-primary, .btn-outline-danger {
+    transition: all 0.2s ease;
+}
+.btn-outline-primary:hover {
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.18);
+}
+.btn-outline-danger:hover {
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.18);
+}

@@ -1,0 +1,23 @@
+{
+  "event": {
+    "title": "The Eras Tour & Friendship Bracelet Making",
+    "pricePerSeat": 15,
+    "totalCapacity": 30
+  },
+  "bookings": [
+    {
+      "id": "1",
+      "customerName": "Amelia Rose",
+      "email": "amelia@example.com",
+      "phone": "555-0143",
+      "seats": [
+        "A1",
+        "A2"
+      ],
+      "notes": "Prefers pink bracelets!",
+      "totalPaid": 30,
+      "timestamp": "2026-06-14T10:00:00.000Z"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

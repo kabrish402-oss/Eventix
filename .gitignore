@@ -1,0 +1,39 @@
+# Dependencies
+
+node_modules/
+
+
+
+# JSON Server database (optional — keep if you want sample data in repo)
+
+# db.json
+
+
+
+# Logs
+
+*.log
+
+npm-debug.log*
+
+
+
+# Environment files
+
+.env
+
+
+
+# OS files
+
+.DS_Store
+
+Thumbs.db
+
+
+
+# Editor folders
+
+.vscode/
+
+.idea/

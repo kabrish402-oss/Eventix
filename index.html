@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventix | Reserve Your Experience</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-user shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-pink" href="index.html">✨ Eventix</a>
+            <div class="d-flex">
+                <a href="admin.html" class="btn btn-outline-purple btn-sm fw-bold border-purple text-dark">
+                    <i class="fa-solid fa-user-gear me-1"></i> Admin Panel
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div id="loading-state" class="text-center my-4 d-none">
+            <div class="spinner-border text-pink" role="status"></div>
+            <p class="mt-2 text-muted">Curating your experience... ✨</p>
+        </div>
+        <div id="error-state" class="alert alert-danger text-center d-none" role="alert">
+            <i class="fa-solid fa-triangle-exclamation me-2"></i> Unable to synchronize with backend services. Please ensure json-server is running on port 3000.
+        </div>
+
+        <div id="main-content-row" class="row g-4">
+            <section class="col-lg-7">
+                <div class="glass-card p-4 text-center">
+                    <h2 class="h4 mb-4" id="event-title">Loading Event Target...</h2>
+                    <div class="stage-container mb-5">
+                        <div class="stage-line"></div>
+                        <span class="stage-text">✨ THE MAIN STAGE ✨</span>
+                    </div>
+
+                    <div id="seating-grid" class="d-flex flex-column gap-3 align-items-center mb-4"></div>
+
+                    <div class="d-flex justify-content-center gap-4 flex-wrap legend-container pt-3">
+                        <div class="legend-item"><span class="seat-sample available"></span> Available</div>
+                        <div class="legend-item"><span class="seat-sample selected"></span> Selected</div>
+                        <div class="legend-item"><span class="seat-sample occupied"></span> Reserved</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-lg-5">
+                <div class="glass-card p-4">
+                    <h3 class="h4 fw-bold mb-4"><i class="fa-solid fa-wand-magic-sparkles text-pink me-2"></i>Secure Your Seats</h3>
+                    
+                    <form id="booking-form" novalidate>
+                        <div class="mb-3">
+                            <label for="custName" class="form-label small fw-bold">Full Name</label>
+                            <input type="text" class="form-control custom-input" id="custName" required>
+                            <div class="error-feedback" id="err-name">Please enter your full name.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="custEmail" class="form-label small fw-bold">Email Address</label>
+                            <input type="email" class="form-control custom-input" id="custEmail" required>
+                            <div class="error-feedback" id="err-email">Please provide a valid email format.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="custPhone" class="form-label small fw-bold">Mobile Number</label>
+                            <input type="tel" class="form-control custom-input" id="custPhone" required>
+                            <div class="error-feedback" id="err-phone">Please enter your mobile phone number.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="custSeats" class="form-label small fw-bold">Chosen Seats</label>
+                            <input type="text" class="form-control custom-input bg-light" id="custSeats" readonly required>
+                            <div class="error-feedback" id="err-seats">Please tap and click your seats above.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="custNotes" class="form-label small fw-bold">Special Requests / Bracelet Customization</label>
+                            <select class="form-select custom-input" id="custNotes">
+                                <option value="Standard Pastel Pink Theme">Standard Pastel Pink Theme</option>
+                                <option value="Lavender Glow Accent Bundle">Lavender Glow Accent Bundle</option>
+                                <option value="VIP Glitter Sparkle Option">VIP Glitter Sparkle Option</option>
+                            </select>
+                        </div>
+
+                        <div class="border-top pt-3 mb-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold">Total Calculations:</span>
+                                <span class="fs-4 fw-bold text-pink" id="total-bill">$0</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-pink w-100 py-3 fw-bold">
+                            Complete My Magical Booking 💕
+                        </button>
+                    </form>
+
+                    <div id="booking-success" class="alert alert-success text-center mt-3 d-none" role="alert">
+                        🎉 Splendid choice! Your dynamic tickets are locked in successfully.
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

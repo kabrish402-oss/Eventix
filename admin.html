@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventix Panel | Admin Management Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-admin shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="admin.html">🔮 Eventix Workspace <span class="badge bg-danger ms-2 font-monospace" style="font-size:0.65rem; vertical-align: middle;">ADMIN CONTROL</span></a>
+            <div class="d-flex">
+                <a href="index.html" class="btn btn-light btn-sm fw-bold text-purple">
+                    <i class="fa-solid fa-right-from-bracket me-1"></i> Public Terminal
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <section class="row g-3 mb-5 text-center">
+            <div class="col-md-4">
+                <div class="glass-card p-4 border-start border-5 border-primary admin-stat-card card-revenue">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <p class="text-muted text-uppercase small mb-0 fw-bold">Accumulated Gross Revenue</p>
+                        <i class="fa-solid fa-hand-holding-dollar text-primary fs-4"></i>
+                    </div>
+                    <h2 class="display-5 fw-bold text-primary text-start" id="stat-revenue">$0</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card p-4 border-start border-5 border-success admin-stat-card card-seats">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <p class="text-muted text-uppercase small mb-0 fw-bold">Reserved Ticket Positions</p>
+                        <i class="fa-solid fa-couch text-success fs-4"></i>
+                    </div>
+                    <h2 class="display-5 fw-bold text-success text-start" id="stat-seats">0</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card p-4 border-start border-5 border-warning admin-stat-card card-capacity">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <p class="text-muted text-uppercase small mb-0 fw-bold">Remaining Available Capacity</p>
+                        <i class="fa-solid fa-circle-check text-warning fs-4"></i>
+                    </div>
+                    <h2 class="display-5 fw-bold text-warning text-start" id="stat-capacity">0</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="h5 fw-bold mb-0"><i class="fa-solid fa-list-check me-2 text-purple"></i>Live Customer Bookings Ledger</h3>
+                <span class="badge text-dark border px-3 py-2 rounded-pill" style="background:#f3e5f5; font-weight: 600;">
+                    <i class="fa-solid fa-user-group me-1 text-purple"></i> Active Reservations
+                </span>
+            </div>
+            <div class="table-responsive admin-table-container">
+                <table class="table align-middle table-hover custom-table mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">Guest</th>
+                            <th>Email Address</th>
+                            <th>Seats Allocated</th>
+                            <th>Theme Addon</th>
+                            <th>Payment</th>
+                            <th class="text-end pe-3">Administrative Controls</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card p-2" style="background: rgba(255,255,255,0.95); border: 1px solid rgba(255,255,255,0.8);">
+                <div class="modal-header border-0">
+                    <h4 class="modal-title fw-bold" id="editModalLabel">Modify Guest Record</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-form">
+                        <input type="hidden" id="edit-booking-id">
+                        <div class="mb-3">
+                            <label for="edit-name" class="form-label small fw-bold">Guest Name</label>
+                            <input type="text" class="form-control custom-input" id="edit-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-email" class="form-label small fw-bold">Email Address</label>
+                            <input type="email" class="form-control custom-input" id="edit-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-notes" class="form-label small fw-bold">Theme Addon</label>
+                            <select class="form-select custom-input" id="edit-notes">
+                                <option value="Standard Pastel Pink Theme">Standard Pastel Pink Theme</option>
+                                <option value="Lavender Glow Accent Bundle">Lavender Glow Accent Bundle</option>
+                                <option value="VIP Glitter Sparkle Option">VIP Glitter Sparkle Option</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-pink w-100 py-2 fw-bold mt-2">Save Modification Settings</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
